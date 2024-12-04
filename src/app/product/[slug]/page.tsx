@@ -1,8 +1,49 @@
-import Add from "../components/Add";
-import CustomizeProduct from "../components/CustomizeProduct";
-import ProductImage from "../components/ProductImages";
+"use client"
 
-const SinglePage = () => {
+import { useParams } from "next/navigation";
+import Add from "../../components/Add";
+import CustomizeProduct from "../../components/CustomizeProduct";
+import ProductImage from "../../components/ProductImages";
+
+// Định nghĩa kiểu dữ liệu cho sản phẩm
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  price: number;
+}
+
+// Dữ liệu tĩnh hoặc giả lập (bạn có thể thay thế bằng API thực tế)
+const products: Product[] = [
+  {
+    id: "product-1",
+    name: "Combo 5 Ream giấy A3 80",
+    description:
+      "Giấy ghi chú Pastel Thiên Long gồm 100 tờ trong 1 xấp với định lượng",
+    image: "/images/product-1.jpg",
+    price: 70000,
+  },
+  {
+    id: "product-2",
+    name: "Combo 10 Ream giấy A4 70",
+    description: "Giấy A4 với chất lượng cao, phù hợp cho văn phòng",
+    image: "/images/product-2.jpg",
+    price: 90000,
+  },
+  // Các sản phẩm khác...
+];
+
+const ProductDetailPage = () => {
+  const { slug } = useParams<{ slug: string }>();
+
+  // Tìm sản phẩm từ danh sách sản phẩm dựa trên ID
+  const product = products.find((item) => item.id === slug);
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   return (
     <div className="px-4 md:px-8 lg:px-6 xl:32 2xl:px-32 relative flex flex-col lg:flex-row gap-16">
       {/* IMG */}
@@ -27,7 +68,7 @@ const SinglePage = () => {
         {/* Đối với thương mại điện tử quần áo thì thêm sizes và colors */}
 
         <Add />
-        
+
         <div className="h-[2px] bg-gray-100"></div>
         <div className="text-sm">
           <h4 className="font-medium mb-4">Nội dung</h4>
@@ -53,4 +94,4 @@ const SinglePage = () => {
   );
 };
 
-export default SinglePage;
+export default ProductDetailPage;
