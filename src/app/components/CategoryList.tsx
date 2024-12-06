@@ -4,7 +4,7 @@ import ProductFeatureTwo from "../../../public/productFeature_2.webp";
 
 const CategoryList = () => {
   return (
-    <div className="px-4">
+    <div className="px-4 overflow-x-scroll">
       <div className="flex gap-4 md:gap-8">
         <Link
           href={`list?cat=tes   t`}

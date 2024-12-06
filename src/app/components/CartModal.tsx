@@ -1,25 +1,22 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import CartNull from "../../../public/cart_null.webp";
+import Image from 'next/image';
+import CartNull from '../../../public/cart_null.webp';
+import { useRouter } from 'next/router';
 
-const CartModal = () => {
+type Props = {
+  handleGoToCheckoutCart: () => void;
+};
+
+const CartModal: React.FC<Props> = ({handleGoToCheckoutCart}) => {
   const cartItems = true;
 
   return (
     <div className="w-max absolute p-4 top-12 right-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white flex flex-col gap-6 z-20">
       {!cartItems ? (
         <div className="flex flex-col items-center">
-          <Image
-            src={CartNull}
-            alt=""
-            width={270}
-            height={270}
-            className="object-cover"
-          />
-          <div className="text-sm text-gray-500">
-            Chưa có sản phẩm trong giỏ hàng...
-          </div>
+          <Image src={CartNull} alt="" width={270} height={270} className="object-cover" />
+          <div className="text-sm text-gray-500">Chưa có sản phẩm trong giỏ hàng...</div>
         </div>
       ) : (
         <>
@@ -118,16 +115,14 @@ const CartModal = () => {
           </div>
 
           <div className="px-2">
-            <p className="text-gray-500 text-sm mt-2 mb-4">
-              Sản phẩm được bán chạy nhất
-            </p>
+            <p className="text-gray-500 text-sm mt-2 mb-4">Sản phẩm được bán chạy nhất</p>
           </div>
 
           <div className="px-2 flex justify-between text-sm">
-            <button className="py-3 px-4 ring-1 ring-gray-300">
-              Xem giỏ hàng
+            <button className="py-3 px-4 ring-1 ring-gray-300">Xem giỏ hàng</button>
+            <button className="py-3 px-4 bg-black text-white font-semibold" onClick={handleGoToCheckoutCart}>
+              Mua hàng
             </button>
-            <button className="py-3 px-4 bg-black text-white font-semibold">Mua hàng</button>
           </div>
         </>
       )}
