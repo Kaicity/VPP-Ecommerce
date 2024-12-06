@@ -2,14 +2,16 @@
 
 import Image from 'next/image';
 import CartNull from '../../../public/cart_null.webp';
-import { useRouter } from 'next/router';
+import { XCircleIcon } from '@heroicons/react/24/solid';
+import { useApp } from '../context/AppContext';
 
-type Props = {
+interface Props {
   handleGoToCheckoutCart: () => void;
-};
+}
 
-const CartModal: React.FC<Props> = ({handleGoToCheckoutCart}) => {
+const CartModal: React.FC<Props> = ({ handleGoToCheckoutCart }) => {
   const cartItems = true;
+  const { closeCart } = useApp();
 
   return (
     <div className="w-max absolute p-4 top-12 right-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white flex flex-col gap-6 z-20">
@@ -20,7 +22,13 @@ const CartModal: React.FC<Props> = ({handleGoToCheckoutCart}) => {
         </div>
       ) : (
         <>
-          <h2 className="px-2 text-xl font-semibold">Giỏ hàng của bạn</h2>
+          <div className="flex justify-between items-center">
+            <h2 className="px-2 text-xl font-semibold">Giỏ hàng của bạn</h2>
+
+            <button onClick={closeCart}>
+              <XCircleIcon className="w-7 h-7 text-brandPrimary" />
+            </button>
+          </div>
           {/* LIST PRODUCT  */}
           <div className="flex flex-col gap-8 h-96 overflow-y-auto scrollbar">
             {/* ITEMS_1 */}

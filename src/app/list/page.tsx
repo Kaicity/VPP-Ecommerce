@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../models/product';
 import { getProducts } from '../api/product';
 import Spinner from '../components/Spinner';
+import PaginationProduct from '../components/pagination';
 
 const ListPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -60,6 +61,7 @@ const ListPage = () => {
       ) : (
         <div className="">
           <ProductList products={products} />
+         <div className='flex justify-center'> <PaginationProduct /></div>
         </div>
       )}
     </div>

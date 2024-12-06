@@ -8,10 +8,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CartModal from './CartModal';
+import { useApp } from '../context/AppContext';
 
 const NavIcons = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { isCartOpen, toggleCart, closeCart } = useApp();
 
   const router = useRouter();
 
@@ -26,6 +27,7 @@ const NavIcons = () => {
 
   const goToCheckoutCart = () => {
     router.push('/checkout-cart');
+    closeCart();
   };
 
   return (
@@ -42,14 +44,7 @@ const NavIcons = () => {
       <Image src={Notification} alt="" width={22} height={22} className="cursor-pointer" />
 
       <div className="relative cursor-pointer">
-        <Image
-          src={Cart}
-          alt=""
-          width={22}
-          height={22}
-          className="cursor-pointer"
-          onClick={() => setIsCartOpen((prev) => !prev)}
-        />
+        <Image src={Cart} alt="" width={22} height={22} className="cursor-pointer" onClick={toggleCart} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
           2
         </div>
