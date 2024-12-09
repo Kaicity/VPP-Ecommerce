@@ -1,8 +1,8 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-import { clearAll, getToken, getUser, saveToken } from '../utils/localstorage';
-import type { User } from '../types/user';
+import { clearAll, getToken, getUser, saveToken } from '../../utils/localstorage';
+import type { User } from '../../types/user';
 
 interface Props {
   isCartOpen: boolean;

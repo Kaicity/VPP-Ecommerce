@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import CartNull from '../../../public/cart_null.webp';
 import { XCircleIcon } from '@heroicons/react/24/solid';
-import { useApp } from '../context/AppContext';
-
+import { useApp } from '@/app/(client)/context/AppContext';
 interface Props {
   handleGoToCheckoutCart: () => void;
 }

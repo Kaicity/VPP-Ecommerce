@@ -1,12 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import CategoryList from './components/CategoryList';
-import ProductList from './components/ProductList';
-import Slider from './components/Slider';
-import ProductFeatureOne from '../../../public/productFeature_1.webp';
-import ProductFeatureTwo from '../../../public/productFeature_2.webp';
-import ModalDialog from './components/ModalDialog';
+import CategoryList from '../components/CategoryList';
+import ProductList from '../components/ProductList';
+import Slider from '../components/Slider';
+
+import ModalDialog from '../components/ModalDialog';
 
 const products = [
   {
@@ -41,7 +40,7 @@ const HomePage = () => {
       <Slider />
       <div className="mt-24 px-4 md:px-8 lg:px-6 xl:32 2xl:px-32">
         <h1 className="text-2xl">Sản phẩm đặc trưng</h1>
-        <ProductList products={[]} />
+        {/*<ProductList products={[]} />*/}
       </div>
       <div className="mt-24">
         <h1 className="text-2xl px-4 md:px-8 lg:px-6 xl:32 2xl:px-32 mb-12">Loại sản phẩm</h1>
@@ -68,7 +67,7 @@ const HomePage = () => {
 
       <div className="mt-24 px-4 md:px-8 lg:px-6 xl:32 2xl:px-32">
         <h1 className="text-2xl">Sản phẩm mới nhất</h1>
-        <ProductList products={[]} />
+        {/*<ProductList products={[]} />*/}
       </div>
     </div>
   );

@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CartModal from './CartModal';
-import { useApp } from '../context/AppContext';
+import { useApp } from '@/app/(client)/context/AppContext';
+
 
 const NavIcons = () => {
   const { isLoggedIn, handleLogout, isCartOpen, toggleCart, closeCart, user } = useApp();

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Register } from '../types/register';
-import { registerIsCustomer } from '../api/register';
+import { Register } from '../../types/register';
+import { registerIsCustomer } from '../../api/register';
 import { useRouter } from 'next/navigation';
 
 const RegisterPage: React.FC = () => {
