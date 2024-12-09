@@ -1,9 +1,8 @@
 "use client"
 
 import { useParams } from "next/navigation";
-import Add from "../../components/Add";
-import CustomizeProduct from "../../components/CustomizeProduct";
-import ProductImage from "../../components/ProductImages";
+import Add from "../../../components/Add";
+import ProductImage from "../../../components/ProductImages";
 
 // Định nghĩa kiểu dữ liệu cho sản phẩm
 interface Product {

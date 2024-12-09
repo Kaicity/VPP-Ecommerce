@@ -1,16 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import BannerProduct from '../../../public/bannerProduct.png';
-import Filter from '../components/Filtrer';
-import ProductList from '../components/ProductList';
+import BannerProduct from '../../../../public/bannerProduct.png';
+import Filter from '../../components/Filtrer';
+import ProductList from '../../components/ProductList';
 import { useEffect, useState } from 'react';
-import { Product } from '../types/product';
-import { getProducts } from '../api/product';
-import Spinner from '../components/Spinner';
-import PaginationProduct from '../components/pagination';
+import { Product } from '../../types/product';
+import { getProducts } from '../../api/product';
+import Spinner from '../../components/Spinner';
+import PaginationProduct from '../../components/pagination';
 import { useApp } from '../context/AppContext';
-import ModalDialog from '../components/ModalDialog';
+import ModalDialog from '../../components/ModalDialog';
 import { useRouter } from 'next/navigation';
 
 const ListPage = () => {
