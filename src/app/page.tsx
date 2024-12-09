@@ -6,6 +6,7 @@ import ProductList from './components/ProductList';
 import Slider from './components/Slider';
 import ProductFeatureOne from '../../../public/productFeature_1.webp';
 import ProductFeatureTwo from '../../../public/productFeature_2.webp';
+import ModalDialog from './components/ModalDialog';
 
 const products = [
   {

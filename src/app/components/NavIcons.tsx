@@ -5,18 +5,25 @@ import Profile from '../../../public/profile.png';
 import Notification from '../../../public/notification.png';
 import Cart from '../../../public/cart.png';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CartModal from './CartModal';
 import { useApp } from '../context/AppContext';
 
 const NavIcons = () => {
+  const { isLoggedIn, handleLogout, isCartOpen, toggleCart, closeCart, user } = useApp();
+
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { isCartOpen, toggleCart, closeCart } = useApp();
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
+
+  const getUserInfo = () => {
+   
+  };
 
   const router = useRouter();
-
-  const isLoggedIn = false;
 
   const handleProfile = () => {
     if (!isLoggedIn) {
@@ -30,26 +37,48 @@ const NavIcons = () => {
     closeCart();
   };
 
+  const logoutAccount = () => {
+    handleLogout();
+    router.push('/');
+  };
+
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
-      <Image src={Profile} alt="" width={22} height={22} className="cursor-pointer" onClick={handleProfile} />
-
+      {/* Profile Icon */}
+      <Image
+        src={Profile}
+        alt="User Profile"
+        width={22}
+        height={22}
+        className="cursor-pointer"
+        onClick={handleProfile}
+        aria-expanded={isProfileOpen ? 'true' : 'false'}
+      />
       {isProfileOpen && (
-        <div className="absolute p-4 top-12 left-0 text-sm shadow-[0_3px_10px_rgb(0,0,0,0.2)] z-20">
-          <Link href="/">Thông tin</Link>
-          <div className="mt-2 cursor-pointer">Đăng xuất</div>
+        <div
+          className="absolute top-12 right-0 p-4 w-max bg-white rounded-lg shadow-lg z-20 transition-transform duration-300 ease-out transform origin-top scale-100"
+          role="menu"
+        >
+          <Link href="/" className="block hover:text-lama">
+            <span className="font-semibold">{user ? user.name : 'Khách'}</span>
+            <p className="text-sm">{user && user.email}</p>
+          </Link>
+          <div onClick={logoutAccount} className="mt-2 cursor-pointer hover:text-lama">
+            Đăng xuất
+          </div>
         </div>
       )}
 
-      <Image src={Notification} alt="" width={22} height={22} className="cursor-pointer" />
+      {/* Notification Icon */}
+      <Image src={Notification} alt="Notifications" width={22} height={22} className="cursor-pointer" />
 
+      {/* Cart Icon */}
       <div className="relative cursor-pointer">
-        <Image src={Cart} alt="" width={22} height={22} className="cursor-pointer" onClick={toggleCart} />
+        <Image src={Cart} alt="Cart" width={22} height={22} className="cursor-pointer" onClick={toggleCart} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
           2
         </div>
       </div>
-
       {isCartOpen && <CartModal handleGoToCheckoutCart={goToCheckoutCart} />}
     </div>
   );
