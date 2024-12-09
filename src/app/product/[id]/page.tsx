@@ -35,17 +35,17 @@ const products: Product[] = [
 ];
 
 const ProductDetailPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { id } = useParams<{ id: string }>();
 
   // Tìm sản phẩm từ danh sách sản phẩm dựa trên ID
-  const product = products.find((item) => item.id === slug);
+  //const product = products.find((item) => item.id === id);
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+  // if (!product) {
+  //   return <div>Product not found</div>;
+  // }
 
   return (
-    <div className="px-4 md:px-8 lg:px-6 xl:32 2xl:px-32 relative flex flex-col lg:flex-row gap-16">
+    <div className="px-4 md:px-8 lg:px-6 xl:32 2xl:px-32 relative flex flex-col lg:flex-row gap-16 mt-12">
       {/* IMG */}
       <div className="w-full lg:w-1/2 lg:sticky top-20 h-max">
         <ProductImage />

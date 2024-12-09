@@ -1,12 +1,18 @@
-// import { instance } from '.';
-// import type { Register } from '../models/register';
+import { instance } from '.';
+import type { Register } from '../types/register';
 
-// export const register = async (payload: Register): Promise<APIResponse<{ userId?: string }>> => {
-//   try {
-//     const response = await instance.post('/auth/register', payload);
-//     return new APIResponse(response.data.result, response.data.isSuccess, response.data.message);
-//   } catch (error: any) {
-//     const errorMessage = error.response?.data?.message || 'Đăng ký thất bại. Vui lòng thử lại.';
-//     throw new Error(errorMessage);
-//   }
-// };
+export const registerIsCustomer = async (register: Register): Promise<string> => {
+  try {
+    const response = await instance.post('/auth/register/customer', register);
+
+    if (response.data?.isSuccess) {
+      return response.data.message;
+    } else {
+      throw new Error('Failed to request data customer');
+    }
+  } catch (error: any) {
+    const errorMessage = error.response?.data?.result[0]?.description;
+    console.error(errorMessage);
+    throw new Error(errorMessage);
+  }
+};
